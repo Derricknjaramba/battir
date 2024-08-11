@@ -1,0 +1,47 @@
+/* BotSpecs.css */
+
+.bot-specs-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1500;
+}
+
+.bot-specs {
+    background-color: #fafafa;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 75%;
+    max-width: 650px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.bot-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+}
+
+.close-button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-button:hover {
+    background-color: #218838;
+}

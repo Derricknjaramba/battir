@@ -1,0 +1,86 @@
+/* App.css */
+
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+  }
+  
+  /* Main Container Styles */
+  .App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Grid Layout for Bot Collection and Your Bot Army */
+  .collection-container, .army-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* Center the grid within the container */
+  }
+  
+  /* Bot Card Styles */
+  .bot-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bot-card img {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  
+  .bot-card h3 {
+    margin: 12px 0;
+    font-size: 1.3em;
+    color: #333;
+  }
+  
+  .bot-card p {
+    color: #666;
+  }
+  
+  .bot-card button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .bot-card button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .bot-card button.release-btn {
+    background-color: #dc3545;
+  }
+  
+  .bot-card button.release-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .collection-container, .army-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  

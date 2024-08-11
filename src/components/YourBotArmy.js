@@ -1,20 +1,25 @@
 // src/containers/YourBotArmy.js
 import React from 'react';
-import BotCard from '../components/BotCard';
+import BotCard from './BotCard';
 
-const YourBotArmy = ({ bots, onRemove, onDischarge }) => {
+function YourBotArmy({ bots, releaseBot, dischargeBot }) {
   return (
     <div className="your-bot-army">
-      {bots.map(bot => (
-        <div key={bot.id} className="bot-card-container">
-          <BotCard bot={bot} />
-          <button onClick={() => onRemove(bot)}>Remove from Army</button>
-          <button onClick={() => onDischarge(bot)}>Discharge Bot</button>
-        </div>
-      ))}
+      <h2>Your Bot Army</h2>
+      <div className="bot-grid">
+        {bots.map((bot) => (
+          <BotCard
+            key={bot.id}
+            bot={bot}
+            handleClick={releaseBot}
+            dischargeBot={dischargeBot}
+            isInArmy={true} // Indicate that bots are in the army
+          />
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default YourBotArmy;
 

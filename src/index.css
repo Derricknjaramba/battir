@@ -1,24 +1,69 @@
-body {
+/* Basic reset and styling */
+* {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: border-box;
 }
 
-.text-wrap {
-  word-wrap: break-word;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eaeaea;
+  color: #444;
 }
 
-.bot-army {
-  overflow-x: scroll;
-  min-height: 300px;
+.App {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.bot-collection, .bot-army {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.bot-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bot-card img {
   max-width: 100%;
+  border-radius: 50%;
+  border: 2px solid #ddd;
 }
 
-.ui.grid > .row.bot-army-row {
-  flex-wrap: nowrap;
-  min-height: 100%;
+h2 {
+  margin-bottom: 25px;
+  font-size: 1.5em;
 }
 
-.ui.grid {
-  padding: 0px 20px;
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 16px;
 }
+
+button:hover {
+  background-color: #218838;
+}
+
+button[style*="color: red"] {
+  background-color: #dc3545;
+}
+
+button[style*="color: red"]:hover {
+  background-color: #c82333;
+}
+

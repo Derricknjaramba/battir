@@ -1,37 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BotCollection from './components/BotCollection';
 import YourBotArmy from './components/YourBotArmy';
+import './styles.css';
 
-const App = () => {
-  const [botArmy, setBotArmy] = useState([]);
+function App() {
+  const [bots, setBots] = useState([]);
+  const [yourBotArmy, setYourBotArmy] = useState([]);
 
-  const handleEnlist = (bot) => {
-    setBotArmy((prevArmy) => [...prevArmy, bot]);
+  useEffect(() => {
+    fetch('http://localhost:3000/bots')
+      .then(response => response.json())
+      .then(data => setBots(data));
+  }, []);
+
+  const enlistBot = (bot) => {
+    if (!yourBotArmy.some(b => b.id === bot.id)) {
+      setYourBotArmy([...yourBotArmy, bot]);
+    }
   };
 
-  const handleRelease = (bot) => {
-    setBotArmy((prevArmy) => prevArmy.filter((b) => b.id !== bot.id));
+  const releaseBot = (bot) => {
+    setYourBotArmy(yourBotArmy.filter(b => b.id !== bot.id));
   };
 
-  const handleDelete = (bot) => {
-    fetch(`http://localhost:8001/bots/${bot.id}`, {
+  const dischargeBot = (bot) => {
+    fetch(`http://localhost:3000/bots/${bot.id}`, {
       method: 'DELETE',
     }).then(() => {
-      setBotArmy((prevArmy) => prevArmy.filter((b) => b.id !== bot.id));
+      setYourBotArmy(yourBotArmy.filter(b => b.id !== bot.id));
+      setBots(bots.filter(b => b.id !== bot.id));
     });
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Bot Battlr</h1>
-      <BotCollection onEnlist={handleEnlist} />
+    <div className="App">
       <YourBotArmy
-        bots={botArmy}
-        onRelease={handleRelease}
-        onDelete={handleDelete}
+        bots={yourBotArmy}
+        releaseBot={releaseBot}
+        dischargeBot={dischargeBot}
+      />
+      <BotCollection 
+        bots={bots} 
+        addToArmy={enlistBot} 
+        onBotClick={() => {}} // Update if needed
       />
     </div>
   );
-};
+}
 
 export default App;
